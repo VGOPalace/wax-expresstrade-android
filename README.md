@@ -2,7 +2,7 @@
 
 Here you find the Android Source Code of the **VGOPalace Contest Entry** for the **Wax ExpressTrade Contest**! 
 
- - The application is built using the Phonegap Framework and will work on any Device with Android 4.4.2+ / iOS Coming Soon. 
+ - The application is built using the Phonegap Framework and will work on any Device with Android 5.0+ / iOS Coming Soon. 
  - Our Backend is running NodeJS and acts as the main API Request Handler.
 
  
