@@ -8,7 +8,7 @@ Here you find the Android Source Code of the **VGOPalace Contest Entry** for the
  
 ## Changelog
 
-### V 1.1.0 - Nov. 21, 2018
+### V 1.1.1 - Nov. 21, 2018
 
 #### Bugfixes & Changes
 
