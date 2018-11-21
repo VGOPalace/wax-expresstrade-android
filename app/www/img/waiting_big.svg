@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 3">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="waiting_big" transform="translate(570.5 11.5)">
+    <rect id="Rechteck_222" data-name="Rechteck 222" class="cls-1" width="3" height="3" transform="translate(-570.5 -11.5)"/>
+    <rect id="Rechteck_223" data-name="Rechteck 223" class="cls-1" width="3" height="3" transform="translate(-565.5 -11.5)"/>
+    <rect id="Rechteck_224" data-name="Rechteck 224" class="cls-1" width="3" height="3" transform="translate(-560.5 -11.5)"/>
+  </g>
+</svg>

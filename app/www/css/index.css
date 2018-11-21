@@ -1,0 +1,3433 @@
+/* -------------------------------------------------------------------------------------------------------------------- */
+
+/* NOTE: BASE */
+
+:root {
+    --blue: #64F2F2;
+    --darkblue: #12161E;
+    --overlayblue: #0C0F15;
+    --itemblue: #141923;
+    --menublue: #171D29;
+    --white: #FFFFFF;
+    --orange: #F78E1E;
+    --red: #EE3D4F;
+    --green: #61FF8B;
+    --black: #000000;
+    --blackalpha: rgba(0,0,0,0.1);
+    --lightblackalpha: rgba(0,0,0,0.2);
+    --darkblackalpha: rgba(0,0,0,0.3);
+    --whitealpha: rgba(255,255,255,0.5);
+    --bluealpha: rgba(12,15,21,0.75);
+
+    --lightyellow: #FFEF61;
+    --yellow: #F1C729;
+    --purple: #B400FF;
+    --pink: #FF00EE;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+body {
+    position: fixed;
+    font-family: "Roboto";
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -webkit-user-select: none;
+    background-color: var(--darkblue);
+    color: var(--white);
+    background-attachment: fixed;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    overflow: hidden;
+}
+
+
+
+
+
+
+
+/* -------------------------------------------------------------------------------------------------------------------- */
+
+/* NOTE: MAIN APP */
+
+.apploadingcontent {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+/* -------------------------------------------------------------------------------------------------------------------- */
+
+/* NOTE: LOADING */
+
+.apploadingwrapper {
+    width: fit-content;
+    height: fit-content;
+    margin: auto auto;
+}
+
+.apploading {
+    margin: 0 auto;
+    width: 74px;
+    height: fit-content;
+}
+
+.apploadingimg {
+    width: 74px;
+    height: 25.5px;
+    margin-bottom: 30px;
+}
+
+.apploadingimg[login] {
+    margin-bottom: 90px;
+    transition: .5s;
+}
+
+.apploadingbar {
+    width: 74px;
+    height: 13px;
+    position: relative;
+    opacity: 1;
+}
+
+.apploadingbar[disable] {
+    opacity: 0;
+    transition: .5s;
+}
+
+.apploadingbarborder {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 70px;
+    height: 9px;
+    border: 2px solid var(--white);
+}
+
+.apploadingbarloader {
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 0%;
+    height: 9px;
+    background: var(--white);
+    transition: .2s;
+}
+
+.apploadingbarloader[loading] {
+    animation: loadBar 1s linear 0s 1 forwards;
+}
+
+.applogin {
+    margin: 0 auto;
+    width: 250px;
+    height: 145px;
+    height: fit-content;
+    transition: .5s;
+    display: none;
+}
+
+.apploginbutton {
+    width: 250px;
+    height: 30px;
+    margin-top: 10px;
+    position: relative;
+}
+
+.apploginbuttontop {
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    background: var(--overlayblue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.apploginbuttontopimg {
+    width: 13px;
+    height: 18px;
+}
+
+.apploginbuttonbottom {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 220px;
+    height: 30px;
+    background: var(--orange);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.apploginbuttonbottomtext1 {
+    display: inline-block;
+    font-size: 10px;
+    margin-top: 1px;
+}
+
+.apploginbuttonbottomtext2 {
+    display: inline-block;
+    font-size: 4px;
+    margin-bottom: 5px;
+    margin-left: 2px;
+}
+
+
+.apploginheader {
+    font-size: 12px;
+    width: 100%;
+    text-align: center;
+}
+
+.appoverlay {
+    overflow-x: hidden;
+    transition: .3s;
+    width: 100vw;
+    height: 68px;
+    background: var(--overlayblue);
+    box-shadow: 0px 0px 4px var(--blackalpha);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 500;
+}
+
+.appoverlaycode {
+    width: 100%;
+    margin-top: 13px;
+    height: fit-content;
+}
+
+.appoverlaycodetitle {
+    width: 100%;
+    color: var(--blue);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-align: center;
+    transition: .2s;
+}
+
+.appoverlaycodetitle[new] {
+    animation: timerTitle 30s linear 0s 1 forwards;
+}
+
+.appoverlaycodeuser {
+    width: 100%;
+    color: var(--white);
+    font-size: 10px;
+    text-align: center;
+    opacity: .5;
+    margin-top: 5px;
+}
+
+.appoverlaycodebutton {
+    border: none;
+    outline: none;
+    width: 150px;
+    height: 26px;
+    background: var(--blue);
+    color: var(--overlayblue);
+    font-size: 12px;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.appoverlaybar {
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--black);
+}
+
+.appoverlaybartop {
+    height: 3px;
+    width: 100%;
+    background: var(--blue);
+    transition: .2s;
+}
+
+.appoverlaybartop[new] {
+    animation: timerBar 30s linear 0s 1 forwards;
+}
+
+.appcontentwrapper {
+    overflow-x: hidden;
+    transition: .3s;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.appcontentbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background: var(--overlayblue);
+    width: 100%;
+    height: 66px;
+    box-shadow: 0px 4px 4px var(--blackalpha);
+}
+
+.appcontenttitle {
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
+}
+
+.appcontentleft {
+    position: absolute;
+    left: 10px;
+}
+
+.appcontentright {
+    position: absolute;
+    right: 10px;
+}
+
+
+.appcontentinner {
+    width: 100%;
+    height: calc(100vh - 66px - 68px);
+    max-height: calc(100vh - 66px - 68px);
+    overflow: auto;
+    position: absolute;
+    top: 66px;
+    left: 0px;
+}
+
+.appcontentinner[in] {
+    animation: moveLeft .4s ease-in-out 0s 1 forwards;
+}
+
+.appcontentinner[out] {
+    animation: moveRight .4s ease-in-out 0s 1 forwards;
+}
+
+.appcontentinner[overscroll] {
+    animation: overscroll .4s ease-in-out 0s 1 forwards;
+}
+
+.appcontentloading {
+    width: 100%;
+    height: calc(100vh - 66px - 68px);
+    max-height: calc(100vh - 66px - 68px);
+    overflow: auto;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 66px;
+    left: 0px;
+}
+
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.lds-ellipsis div {
+  position: absolute;
+  top: 27px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.lds-ellipsis div:nth-child(1) {
+  left: 6px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(2) {
+  left: 6px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(3) {
+  left: 26px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(4) {
+  left: 45px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(19px, 0);
+  }
+}
+
+
+
+
+
+
+/* -------------------------------------------------------------------------------------------------------------------- */
+
+/* NOTE: TRADES */
+
+.trade:last-of-type {
+    margin-bottom: 10px !important;
+}
+
+.appitemwrapper {
+    background: var(--bluealpha);
+    width: 100vw;
+    height: calc(100vh - 68px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    position: absolute;
+}
+
+.appitem {
+    overflow: auto;
+    background: var(--itemblue);
+    height: 400px;
+    width: calc(100vw - 70px);
+    position: absolute;
+    padding: 25px;
+}
+
+.appitem.Mil-Spec .appitemname {
+    color: var(--blue);
+}
+
+.appitem.Restricted .appitemname {
+    color: var(--purple);
+}
+
+.appitem.Classified .appitemname {
+    color: var(--pink);
+}
+
+.appitem.Covert .appitemname {
+    color: var(--red);
+}
+
+.appitem.Legendary .appitemname {
+    color: var(--yellow);
+}
+
+.appitem.null .appitemname {
+    color: var(--whitealpha);
+}
+
+.appitem.null .itembar {
+    display: none;
+}
+
+.appitem.null .itemarrow {
+    display: none;
+}
+
+.appitemname {
+    font-size: 12px;
+}
+
+.appitemclose {
+    position: absolute;
+    right: 25px;
+    top: 23px;
+    font-size: 17px;
+}
+
+.appitemimage {
+    width: calc(100% - 50px);
+    height: 180px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 60px;
+}
+
+.appiteminfoleft1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(50% - 25px);
+    position: absolute;
+    left: 25px;
+    top: 275px;
+    text-align: left;
+    color: var(--whitealpha);
+    font-size: 10px;
+}
+
+.appiteminfobig {
+    color: var(--white);
+    font-weight: 500;
+}
+
+.appiteminfoleft2 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(50% - 25px);
+    position: absolute;
+    left: 25px;
+    top: 295px;
+    text-align: left;
+    color: var(--whitealpha);
+    font-size: 10px;
+}
+
+.appiteminfoleft3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(50% - 25px);
+    position: absolute;
+    left: 25px;
+    top: 315px;
+    text-align: left;
+    color: var(--whitealpha);
+    font-size: 10px;
+}
+
+.appiteminforight1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(50% - 25px);
+    position: absolute;
+    right: 25px;
+    top: 275px;
+    text-align: right;
+    color: var(--whitealpha);
+    font-size: 10px;
+}
+
+.appiteminforight2 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(50% - 25px);
+    position: absolute;
+    right: 25px;
+    top: 295px;
+    text-align: right;
+    color: var(--whitealpha);
+    font-size: 10px;
+}
+
+.appiteminforight3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(50% - 25px);
+    position: absolute;
+    right: 25px;
+    top: 315px;
+    text-align: right;
+    color: var(--whitealpha);
+    font-size: 10px;
+}
+
+.appiteminspect {
+    position: absolute;
+    top: 360px;
+    width: calc(100% - 50px);
+    height: 26px;
+    background: var(--blue);
+    color: var(--itemblue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    font-size: 10px;
+}
+
+.appitemwithdraw {
+    position: absolute;
+    top: 395px;
+    width: calc(100% - 50px);
+    height: 26px;
+    background: var(--red);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    font-size: 10px;
+    margin-bottom: 25px;
+}
+
+
+/* NOTE: USER CREATING */
+
+.trade[user][creating] {
+    width: calc(100vw - 70px);
+    height: 36px;
+    padding: 25px;
+    margin: 0 auto;
+    background: var(--overlayblue);
+    margin-top: 10px;
+    box-shadow: 0px 4px 4px var(--blackalpha);
+}
+
+.trade[user][creating] .tradeavatar {
+    width: 36px;
+    height: 36px;
+    background: var(--white);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.trade[user][creating] .tradestatus {
+    display: none;
+    background: var(--white);
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    z-index: 5;
+}
+
+.trade[user][creating] .tradecontent {
+    
+    display: inline-block;   
+    position: relative; 
+    vertical-align: middle;
+    height: 36px;
+    width: calc(100vw - 50px - 20px);
+    float: right;
+}
+
+
+.trade[user][creating] .tradeuser {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--white);
+    position: absolute;
+    font-size: 16px;
+    left: 51px;
+    top: 2px;
+    width: calc(100% - 51px - 90px);
+}
+
+.trade[user][creating] .tradetime {
+    position: absolute;
+    font-size: 8px;
+    right: 0;
+    top: 4px;
+}
+
+.trade[user][creating] .tradestatusimg {
+    width: 5px;
+    height: 3.5px;
+    position: absolute;
+}
+
+.trade[user][creating] .tradeauth {
+    display: none;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    left: 50px;
+    top: 1px;
+}
+
+.trade[user][creating] .tradeinfo {
+    position: absolute;
+    font-size: 10px;
+    width: calc(100% - 51px);
+    left: 51px;
+    bottom: 0;
+}
+
+/* NOTE: FAV USER ACCEPTED */
+
+.trade[fav][user][pending] {
+    width: calc(100vw - 70px);
+    height: 36px;
+    padding: 25px;
+    margin: 0 auto;
+    background: var(--overlayblue);
+    margin-top: 10px;
+    box-shadow: 0px 4px 4px var(--blackalpha);
+}
+
+.trade[fav][user][pending] .tradeavatar {
+    width: 36px;
+    height: 36px;
+    background: var(--white);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.trade[fav][user][pending] .tradestatus {
+    display: none;
+    background: var(--yellow);
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    z-index: 5;
+}
+
+.trade[fav][user][pending] .tradecontent {
+    
+    display: inline-block;   
+    position: relative; 
+    vertical-align: middle;
+    height: 36px;
+    width: calc(100vw - 50px - 20px);
+    float: right;
+}
+
+
+.trade[fav][user][pending] .tradeuser {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--yellow);
+    position: absolute;
+    font-size: 16px;
+    left: 66px;
+    top: 2px;
+    width: calc(100% - 51px - 90px - 15px);
+}
+
+.trade[fav][user][pending] .tradetime {
+    position: absolute;
+    font-size: 8px;
+    right: 0;
+    top: 4px;
+}
+
+.trade[fav][user][pending] .tradestatusimg {
+    margin-top: 0.5px;
+    width: 5px;
+    height: 3.5px;
+    position: absolute;
+}
+
+.trade[fav][user][pending] .tradeauth {
+    display: block;
+    width: 10px;
+    height: 9.5px;
+    position: absolute;
+    left: 50px;
+    top: 4px;
+}
+
+.trade[fav][user][pending] .tradeinfo {
+    position: absolute;
+    font-size: 10px;
+    width: calc(100% - 51px);
+    left: 51px;
+    bottom: 0;
+}
+
+/* NOTE: FAV USER ACCEPTED */
+
+.trade[fav][user][accepted] {
+    width: calc(100vw - 70px);
+    height: 36px;
+    padding: 25px;
+    margin: 0 auto;
+    background: var(--overlayblue);
+    margin-top: 10px;
+    box-shadow: 0px 4px 4px var(--blackalpha);
+}
+
+.trade[fav][user][accepted] .tradeavatar {
+    width: 36px;
+    height: 36px;
+    background: var(--white);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.trade[fav][user][accepted] .tradestatus {
+    display: flex;
+    background: var(--yellow);
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    z-index: 5;
+}
+
+.trade[fav][user][accepted] .tradecontent {
+    
+    display: inline-block;   
+    position: relative; 
+    vertical-align: middle;
+    height: 36px;
+    width: calc(100vw - 50px - 20px);
+    float: right;
+}
+
+
+.trade[fav][user][accepted] .tradeuser {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--yellow);
+    position: absolute;
+    font-size: 16px;
+    left: 66px;
+    top: 2px;
+    width: calc(100% - 51px - 90px - 15px);
+}
+
+.trade[fav][user][accepted] .tradetime {
+    position: absolute;
+    font-size: 8px;
+    right: 0;
+    top: 4px;
+}
+
+.trade[fav][user][accepted] .tradestatusimg {
+    margin-top: 0.5px;
+    width: 5px;
+    height: 3.5px;
+    position: absolute;
+}
+
+.trade[fav][user][accepted] .tradeauth {
+    display: block;
+    width: 10px;
+    height: 9.5px;
+    position: absolute;
+    left: 50px;
+    top: 4px;
+}
+
+.trade[fav][user][accepted] .tradeinfo {
+    position: absolute;
+    font-size: 10px;
+    width: calc(100% - 51px);
+    left: 51px;
+    bottom: 0;
+}
+
+/* NOTE: FAV USER DECLINED */
+
+.trade[fav][user][declined] {
+    width: calc(100vw - 70px);
+    height: 36px;
+    padding: 25px;
+    margin: 0 auto;
+    background: var(--overlayblue);
+    margin-top: 10px;
+    box-shadow: 0px 4px 4px var(--blackalpha);
+}
+
+.trade[fav][user][declined] .tradeavatar {
+    width: 36px;
+    height: 36px;
+    background: var(--white);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.trade[fav][user][declined] .tradestatus {
+    display: flex;
+    background: var(--yellow);
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    z-index: 5;
+}
+
+.trade[fav][user][declined] .tradecontent {
+    
+    display: inline-block;   
+    position: relative; 
+    vertical-align: middle;
+    height: 36px;
+    width: calc(100vw - 50px - 20px);
+    float: right;
+}
+
+
+.trade[fav][user][declined] .tradeuser {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--yellow);
+    position: absolute;
+    font-size: 16px;
+    left: 66px;
+    top: 2px;
+    width: calc(100% - 51px - 90px - 15px);
+}
+
+.trade[fav][user][declined] .tradetime {
+    position: absolute;
+    font-size: 8px;
+    right: 0;
+    top: 4px;
+}
+
+.trade[fav][user][declined] .tradestatusimg {
+    width: 3.8px;
+    height: 4px;
+    position: absolute;
+}
+
+.trade[fav][user][declined] .tradeauth {
+    display: block;
+    width: 10px;
+    height: 9.5px;
+    position: absolute;
+    left: 50px;
+    top: 4px;
+}
+
+.trade[fav][user][declined] .tradeinfo {
+    position: absolute;
+    font-size: 10px;
+    width: calc(100% - 51px);
+    left: 51px;
+    bottom: 0;
+}
+
+/* NOTE: VCASE ACCEPTED */
+
+.trade[fav][vcase][pending] {
+    width: calc(100vw - 70px);
+    height: 36px;
+    padding: 25px;
+    margin: 0 auto;
+    background: var(--overlayblue);
+    margin-top: 10px;
+    box-shadow: 0px 4px 4px var(--blackalpha);
+}
+
+.trade[fav][vcase][pending] .tradeavatar {
+    display: none;
+    width: 36px;
+    height: 36px;
+    background: var(--white);
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.trade[fav][vcase][pending] .tradestatus {
+    display: flex;
+    background: var(--yellow);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 5;
+}
+
+.trade[fav][vcase][pending] .tradecontent {
+    
+    display: inline-block;   
+    position: relative; 
+    vertical-align: middle;
+    height: 36px;
+    width: calc(100vw - 50px - 20px);
+    float: right;
+}
+
+
+.trade[fav][vcase][pending] .tradeuser {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--yellow);
+    position: absolute;
+    font-size: 16px;
+    left: 66px;
+    top: 2px;
+    width: calc(100% - 51px - 90px - 15px);
+}
+
+.trade[fav][vcase][pending] .tradetime {
+    position: absolute;
+    font-size: 8px;
+    right: 0;
+    top: 4px;
+}
+
+.trade[fav][vcase][pending] .tradestatusimg {
+    width: 13px;
+    height: 3px;
+    position: absolute;
+}
+
+.trade[fav][vcase][pending] .tradeauth {
+    display: block;
+    width: 10px;
+    height: 9.5px;
+    position: absolute;
+    left: 50px;
+    top: 4px;
+}
+
+.trade[fav][vcase][pending] .tradeinfo {
+    position: absolute;
+    font-size: 10px;
+    width: calc(100% - 51px);
+    left: 51px;
+    bottom: 0;
+}
+
+/* NOTE: VCASE ACCEPTED */
+
+.trade[fav][vcase][accepted] {
+    width: calc(100vw - 70px);
+    height: 36px;
+    padding: 25px;
+    margin: 0 auto;
+    background: var(--overlayblue);
+    margin-top: 10px;
+    box-shadow: 0px 4px 4px var(--blackalpha);
+}
+
+.trade[fav][vcase][accepted] .tradeavatar {
+    display: none;
+    width: 36px;
+    height: 36px;
+    background: var(--white);
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.trade[fav][vcase][accepted] .tradestatus {
+    display: flex;
+    background: var(--yellow);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 5;
+}
+
+.trade[fav][vcase][accepted] .tradecontent {
+    
+    display: inline-block;   
+    position: relative; 
+    vertical-align: middle;
+    height: 36px;
+    width: calc(100vw - 50px - 20px);
+    float: right;
+}
+
+
+.trade[fav][vcase][accepted] .tradeuser {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--yellow);
+    position: absolute;
+    font-size: 16px;
+    left: 66px;
+    top: 2px;
+    width: calc(100% - 51px - 90px - 15px);
+}
+
+.trade[fav][vcase][accepted] .tradetime {
+    position: absolute;
+    font-size: 8px;
+    right: 0;
+    top: 4px;
+}
+
+.trade[fav][vcase][accepted] .tradestatusimg {
+    width: 16.8px;
+    height: 12px;
+    margin-top: 1px;
+    position: absolute;
+}
+
+.trade[fav][vcase][accepted] .tradeauth {
+    display: block;
+    width: 10px;
+    height: 9.5px;
+    position: absolute;
+    left: 50px;
+    top: 4px;
+}
+
+.trade[fav][vcase][accepted] .tradeinfo {
+    position: absolute;
+    font-size: 10px;
+    width: calc(100% - 51px);
+    left: 51px;
+    bottom: 0;
+}
+
+/* NOTE: VCASE DECLINED */
+
+.trade[fav][vcase][declined] {
+    width: calc(100vw - 70px);
+    height: 36px;
+    padding: 25px;
+    margin: 0 auto;
+    background: var(--overlayblue);
+    margin-top: 10px;
+    box-shadow: 0px 4px 4px var(--blackalpha);
+}
+
+.trade[fav][vcase][declined] .tradeavatar {
+    display: none;
+    width: 36px;
+    height: 36px;
+    background: var(--white);
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.trade[fav][vcase][declined] .tradestatus {
+    display: flex;
+    background: var(--yellow);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 5;
+}
+
+.trade[fav][vcase][declined] .tradecontent {
+    
+    display: inline-block;   
+    position: relative; 
+    vertical-align: middle;
+    height: 36px;
+    width: calc(100vw - 50px - 20px);
+    float: right;
+}
+
+
+.trade[fav][vcase][declined] .tradeuser {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--yellow);
+    position: absolute;
+    font-size: 16px;
+    left: 66px;
+    top: 2px;
+    width: calc(100% - 51px - 90px - 15px);
+}
+
+.trade[fav][vcase][declined] .tradetime {
+    position: absolute;
+    font-size: 8px;
+    right: 0;
+    top: 4px;
+}
+
+.trade[fav][vcase][declined] .tradestatusimg {
+    width: 12.4px;
+    height: 13.3px;
+    position: absolute;
+}
+
+.trade[fav][vcase][declined] .tradeauth {
+    display: block;
+    width: 10px;
+    height: 9.5px;
+    position: absolute;
+    left: 50px;
+    top: 4px;
+}
+
+.trade[fav][vcase][declined] .tradeinfo {
+    position: absolute;
+    font-size: 10px;
+    width: calc(100% - 51px);
+    left: 51px;
+    bottom: 0;
+}
+
+/* NOTE: USER PENDING */
+
+.trade[user][pending] {
+    width: calc(100vw - 70px);
+    height: 36px;
+    padding: 25px;
+    margin: 0 auto;
+    background: var(--overlayblue);
+    margin-top: 10px;
+    box-shadow: 0px 4px 4px var(--blackalpha);
+}
+
+.trade[user][pending] .tradeavatar {
+    width: 36px;
+    height: 36px;
+    background: var(--white);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.trade[user][pending] .tradestatus {
+    display: none;
+    background: var(--blue);
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    z-index: 5;
+}
+
+.trade[user][pending] .tradecontent {
+    
+    display: inline-block;   
+    position: relative; 
+    vertical-align: middle;
+    height: 36px;
+    width: calc(100vw - 50px - 20px);
+    float: right;
+}
+
+
+.trade[user][pending] .tradeuser {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--blue);
+    position: absolute;
+    font-size: 16px;
+    left: 51px;
+    top: 2px;
+    width: calc(100% - 51px - 90px);
+}
+
+.trade[user][pending] .tradetime {
+    position: absolute;
+    font-size: 8px;
+    right: 0;
+    top: 4px;
+}
+
+.trade[user][pending] .tradestatusimg {
+    width: 5px;
+    height: 3.5px;
+    position: absolute;
+}
+
+.trade[user][pending] .tradeauth {
+    display: none;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    left: 50px;
+    top: 1px;
+}
+
+.trade[user][pending] .tradeinfo {
+    position: absolute;
+    font-size: 10px;
+    width: calc(100% - 51px);
+    left: 51px;
+    bottom: 0;
+}
+
+/* NOTE: USER ACCEPTED */
+
+.trade[user][accepted] {
+    width: calc(100vw - 70px);
+    height: 36px;
+    padding: 25px;
+    margin: 0 auto;
+    background: var(--overlayblue);
+    margin-top: 10px;
+    box-shadow: 0px 4px 4px var(--blackalpha);
+}
+
+.trade[user][accepted] .tradeavatar {
+    width: 36px;
+    height: 36px;
+    background: var(--white);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.trade[user][accepted] .tradestatus {
+    display: flex;
+    background: var(--green);
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    z-index: 5;
+}
+
+.trade[user][accepted] .tradecontent {
+    
+    display: inline-block;   
+    position: relative; 
+    vertical-align: middle;
+    height: 36px;
+    width: calc(100vw - 50px - 20px);
+    float: right;
+}
+
+
+.trade[user][accepted] .tradeuser {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--green);
+    position: absolute;
+    font-size: 16px;
+    left: 51px;
+    top: 2px;
+    width: calc(100% - 51px - 90px);
+}
+
+.trade[user][accepted] .tradetime {
+    position: absolute;
+    font-size: 8px;
+    right: 0;
+    top: 4px;
+}
+
+.trade[user][accepted] .tradestatusimg {
+    margin-top: 0.5px;
+    width: 5px;
+    height: 3.5px;
+    position: absolute;
+}
+
+.trade[user][accepted] .tradeauth {
+    display: none;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    left: 50px;
+    top: 1px;
+}
+
+.trade[user][accepted] .tradeinfo {
+    position: absolute;
+    font-size: 10px;
+    width: calc(100% - 51px);
+    left: 51px;
+    bottom: 0;
+}
+
+/* NOTE: USER DECLINED */
+
+.trade[user][declined] {
+    width: calc(100vw - 70px);
+    height: 36px;
+    padding: 25px;
+    margin: 0 auto;
+    background: var(--overlayblue);
+    margin-top: 10px;
+    box-shadow: 0px 4px 4px var(--blackalpha);
+}
+
+.trade[user][declined] .tradeavatar {
+    width: 36px;
+    height: 36px;
+    background: var(--white);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.trade[user][declined] .tradestatus {
+    display: flex;
+    background: var(--red);
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    z-index: 5;
+}
+
+.trade[user][declined] .tradecontent {
+    
+    display: inline-block;   
+    position: relative; 
+    vertical-align: middle;
+    height: 36px;
+    width: calc(100vw - 50px - 20px);
+    float: right;
+}
+
+
+.trade[user][declined] .tradeuser {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--red);
+    position: absolute;
+    font-size: 16px;
+    left: 51px;
+    top: 2px;
+    width: calc(100% - 51px - 90px);
+}
+
+.trade[user][declined] .tradetime {
+    position: absolute;
+    font-size: 8px;
+    right: 0;
+    top: 4px;
+}
+
+.trade[user][declined] .tradestatusimg {
+    width: 3.8px;
+    height: 4px;
+    position: absolute;
+}
+
+.trade[user][declined] .tradeauth {
+    display: none;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    left: 50px;
+    top: 1px;
+}
+
+.trade[user][declined] .tradeinfo {
+    position: absolute;
+    font-size: 10px;
+    width: calc(100% - 51px);
+    left: 51px;
+    bottom: 0;
+}
+
+/* NOTE: AUTH PENDING */
+
+.trade[auth][pending] {
+    width: calc(100vw - 70px);
+    height: 36px;
+    padding: 25px;
+    margin: 0 auto;
+    background: var(--overlayblue);
+    margin-top: 10px;
+    box-shadow: 0px 4px 4px var(--blackalpha);
+}
+
+.trade[auth][pending] .tradeavatar {
+    width: 36px;
+    height: 36px;
+    background: var(--white);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.trade[auth][pending] .tradestatus {
+    display: none;
+    background: var(--blue);
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    z-index: 5;
+}
+
+.trade[auth][pending] .tradecontent {
+    
+    display: inline-block;   
+    position: relative; 
+    vertical-align: middle;
+    height: 36px;
+    width: calc(100vw - 50px - 20px);
+    float: right;
+}
+
+
+.trade[auth][pending] .tradeuser {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--blue);
+    position: absolute;
+    font-size: 16px;
+    left: 66px;
+    top: 2px;
+    width: calc(100% - 51px - 90px - 15px);
+}
+
+.trade[auth][pending] .tradetime {
+    position: absolute;
+    font-size: 8px;
+    right: 0;
+    top: 4px;
+}
+
+.trade[auth][pending] .tradestatusimg {
+    width: 5px;
+    height: 3.5px;
+    position: absolute;
+}
+
+.trade[auth][pending] .tradeauth {
+    display: block;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    left: 50px;
+    top: 3.5px;
+}
+
+.trade[auth][pending] .tradeinfo {
+    position: absolute;
+    font-size: 10px;
+    width: calc(100% - 51px);
+    left: 51px;
+    bottom: 0;
+}
+
+/* NOTE: AUTH ACCEPTED */
+
+.trade[auth][accepted] {
+    width: calc(100vw - 70px);
+    height: 36px;
+    padding: 25px;
+    margin: 0 auto;
+    background: var(--overlayblue);
+    margin-top: 10px;
+    box-shadow: 0px 4px 4px var(--blackalpha);
+}
+
+.trade[auth][accepted] .tradeavatar {
+    width: 36px;
+    height: 36px;
+    background: var(--white);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.trade[auth][accepted] .tradestatus {
+    display: flex;
+    background: var(--green);
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    z-index: 5;
+}
+
+.trade[auth][accepted] .tradecontent {
+    
+    display: inline-block;   
+    position: relative; 
+    vertical-align: middle;
+    height: 36px;
+    width: calc(100vw - 50px - 20px);
+    float: right;
+}
+
+
+.trade[auth][accepted] .tradeuser {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--green);
+    position: absolute;
+    font-size: 16px;
+    left: 66px;
+    top: 2px;
+    width: calc(100% - 51px - 90px - 15px);
+}
+
+.trade[auth][accepted] .tradetime {
+    position: absolute;
+    font-size: 8px;
+    right: 0;
+    top: 4px;
+}
+
+.trade[auth][accepted] .tradestatusimg {
+    margin-top: 0.5px;
+    width: 5px;
+    height: 3.5px;
+    position: absolute;
+}
+
+.trade[auth][accepted] .tradeauth {
+    display: block;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    left: 50px;
+    top: 3.5px;
+}
+
+.trade[auth][accepted] .tradeinfo {
+    position: absolute;
+    font-size: 10px;
+    width: calc(100% - 51px);
+    left: 51px;
+    bottom: 0;
+}
+
+/* NOTE: AUTH DECLINED */
+
+.trade[auth][declined] {
+    width: calc(100vw - 70px);
+    height: 36px;
+    padding: 25px;
+    margin: 0 auto;
+    background: var(--overlayblue);
+    margin-top: 10px;
+    box-shadow: 0px 4px 4px var(--blackalpha);
+}
+
+.trade[auth][declined] .tradeavatar {
+    width: 36px;
+    height: 36px;
+    background: var(--white);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.trade[auth][declined] .tradestatus {
+    display: flex;
+    background: var(--red);
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    z-index: 5;
+}
+
+.trade[auth][declined] .tradecontent {
+    
+    display: inline-block;   
+    position: relative; 
+    vertical-align: middle;
+    height: 36px;
+    width: calc(100vw - 50px - 20px);
+    float: right;
+}
+
+
+.trade[auth][declined] .tradeuser {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--red);
+    position: absolute;
+    font-size: 16px;
+    left: 66px;
+    top: 2px;
+    width: calc(100% - 51px - 90px - 15px);
+}
+
+.trade[auth][declined] .tradetime {
+    position: absolute;
+    font-size: 8px;
+    right: 0;
+    top: 4px;
+}
+
+.trade[auth][declined] .tradestatusimg {
+    width: 3.8px;
+    height: 4px;
+    position: absolute;
+}
+
+.trade[auth][declined] .tradeauth {
+    display: block;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    left: 50px;
+    top: 3.5px;
+}
+
+.trade[auth][declined] .tradeinfo {
+    position: absolute;
+    font-size: 10px;
+    width: calc(100% - 51px);
+    left: 51px;
+    bottom: 0;
+}
+
+/* NOTE: VCASE PENDING */
+
+.trade[vcase][pending] {
+    width: calc(100vw - 70px);
+    height: 36px;
+    padding: 25px;
+    margin: 0 auto;
+    background: var(--overlayblue);
+    margin-top: 10px;
+    box-shadow: 0px 4px 4px var(--blackalpha);
+}
+
+.trade[vcase][pending] .tradeavatar {
+    display: none;
+    width: 36px;
+    height: 36px;
+    background: var(--white);
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.trade[vcase][pending] .tradestatus {
+    display: flex;
+    background: var(--blue);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 5;
+}
+
+.trade[vcase][pending] .tradecontent {
+    
+    display: inline-block;   
+    position: relative; 
+    vertical-align: middle;
+    height: 36px;
+    width: calc(100vw - 50px - 20px);
+    float: right;
+}
+
+
+.trade[vcase][pending] .tradeuser {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--blue);
+    position: absolute;
+    font-size: 16px;
+    left: 66px;
+    top: 2px;
+    width: calc(100% - 51px - 90px - 15px);
+}
+
+.trade[vcase][pending] .tradetime {
+    position: absolute;
+    font-size: 8px;
+    right: 0;
+    top: 4px;
+}
+
+.trade[vcase][pending] .tradestatusimg {
+    width: 13px;
+    height: 3px;
+    position: absolute;
+}
+
+.trade[vcase][pending] .tradeauth {
+    display: block;
+    width: 10.3px;
+    height: 10px;
+    position: absolute;
+    left: 50px;
+    top: 4px;
+}
+
+.trade[vcase][pending] .tradeinfo {
+    position: absolute;
+    font-size: 10px;
+    width: calc(100% - 51px);
+    left: 51px;
+    bottom: 0;
+}
+
+/* NOTE: VCASE ACCEPTED */
+
+.trade[vcase][accepted] {
+    width: calc(100vw - 70px);
+    height: 36px;
+    padding: 25px;
+    margin: 0 auto;
+    background: var(--overlayblue);
+    margin-top: 10px;
+    box-shadow: 0px 4px 4px var(--blackalpha);
+}
+
+.trade[vcase][accepted] .tradeavatar {
+    display: none;
+    width: 36px;
+    height: 36px;
+    background: var(--white);
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.trade[vcase][accepted] .tradestatus {
+    display: flex;
+    background: var(--green);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 5;
+}
+
+.trade[vcase][accepted] .tradecontent {
+    
+    display: inline-block;   
+    position: relative; 
+    vertical-align: middle;
+    height: 36px;
+    width: calc(100vw - 50px - 20px);
+    float: right;
+}
+
+
+.trade[vcase][accepted] .tradeuser {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--green);
+    position: absolute;
+    font-size: 16px;
+    left: 66px;
+    top: 2px;
+    width: calc(100% - 51px - 90px);
+}
+
+.trade[vcase][accepted] .tradetime {
+    position: absolute;
+    font-size: 8px;
+    right: 0;
+    top: 4px;
+}
+
+.trade[vcase][accepted] .tradestatusimg {
+    width: 16.8px;
+    height: 12px;
+    margin-top: 1px;
+    position: absolute;
+}
+
+.trade[vcase][accepted] .tradeauth {
+    display: block;
+    width: 10.3px;
+    height: 10px;
+    position: absolute;
+    left: 50px;
+    top: 4px;
+}
+
+.trade[vcase][accepted] .tradeinfo {
+    position: absolute;
+    font-size: 10px;
+    width: calc(100% - 51px);
+    left: 51px;
+    bottom: 0;
+}
+
+/* NOTE: VCASE DECLINED */
+
+.trade[vcase][declined] {
+    width: calc(100vw - 70px);
+    height: 36px;
+    padding: 25px;
+    margin: 0 auto;
+    background: var(--overlayblue);
+    margin-top: 10px;
+    box-shadow: 0px 4px 4px var(--blackalpha);
+}
+
+.trade[vcase][declined] .tradeavatar {
+    display: none;
+    width: 36px;
+    height: 36px;
+    background: var(--white);
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.trade[vcase][declined] .tradestatus {
+    display: flex;
+    background: var(--red);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 5;
+}
+
+.trade[vcase][declined] .tradecontent {
+    
+    display: inline-block;   
+    position: relative; 
+    vertical-align: middle;
+    height: 36px;
+    width: calc(100vw - 50px - 20px);
+    float: right;
+}
+
+
+.trade[vcase][declined] .tradeuser {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--red);
+    position: absolute;
+    font-size: 16px;
+    left: 66px;
+    top: 2px;
+    width: calc(100% - 51px - 90px);
+}
+
+.trade[vcase][declined] .tradetime {
+    position: absolute;
+    font-size: 8px;
+    right: 0;
+    top: 4px;
+}
+
+.trade[vcase][declined] .tradestatusimg {
+    width: 12.4px;
+    height: 13.3px;
+    position: absolute;
+}
+
+.trade[vcase][declined] .tradeauth {
+    display: block;
+    width: 10.3px;
+    height: 10px;
+    position: absolute;
+    left: 50px;
+    top: 4px;
+}
+
+.trade[vcase][declined] .tradeinfo {
+    position: absolute;
+    font-size: 10px;
+    width: calc(100% - 51px);
+    left: 51px;
+    bottom: 0;
+}
+
+.tradedecline {
+    width: 26px;
+    height: 26px;
+    background: var(--red);
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 36px;
+    top: 5px;
+}
+
+.tradedecline.re {
+    width: 26px;
+    height: 26px;
+    background: var(--red);
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    top: 5px;
+}
+
+.tradedeclineimg {
+    width: 8.7px;
+    height: 9.4px;
+}
+
+.tradeblockimg {
+    width: 14.6px;
+}
+
+.tradeblacklist {
+    width: calc(100% - 20px);
+    margin: 0 auto;
+    margin-top: 15px;
+    height: 26px;
+    background: var(--red);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    font-size: 10px;
+}
+
+.tradeblacklistinfo {
+    width: calc(100% - 20px);
+    line-height: 10px;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 8px;
+    opacity: .5;
+    margin-top: 7.5px;
+    margin-bottom: 10px;
+}
+
+
+.tradeaccept {
+    width: 26px;
+    height: 26px;
+    background: var(--green);
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0px;
+    top: 5px;
+}
+
+.tradeacceptimg {
+    width: 11.7px;
+    height: 8.3px;
+}
+
+.tradeplus {
+    width: 26px;
+    height: 26px;
+    background: var(--blue);
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.tradeplusimg {
+    width: 10.6px;
+    height: 10.6px;
+}
+
+.trademessage {
+    width: calc(100vw - 70px);
+    height: 30px;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin: 0 auto;
+    position: relative;
+    background-image: linear-gradient(to bottom, #0a0d10, #0a0e11, #0b0e13, #0b0f14, #0c0f15);
+}
+
+.trademessagetext:focus {
+    outline: none;
+    border: none;
+}
+
+.trademessagetext:active {
+    outline: none;
+    border: none;
+}
+
+.trademessageicon {
+    position: absolute;
+    left: 25px;
+    top: 8px;
+    font-size: 14px;
+}
+
+.trademessagetext {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: absolute;
+    font-size: 8px;
+    left: 47px;
+    top: 11.5px;
+    width: calc(100% - 47px - 25px);
+}
+
+.trademessagetext::selection {
+    color: white;
+    background: var(--blue);
+}
+
+.tradeitems {
+    width: calc(100vw - 70px);
+    margin: 0 auto;
+    position: relative;
+    padding: 25px;
+    background: var(--itemblue);
+    padding-top: 18px;
+    margin-bottom: 10px;
+    box-shadow: 0px 4px 4px var(--blackalpha);
+}
+
+.tradeitemshead {
+    height: 13px;
+    width: 100%
+}
+
+.tradeitemshead[received] {
+    margin-top: 30px !important;
+}
+
+.tradeitemsheadleft {
+    font-size: 10px;
+    display: inline-block;
+    float: left;
+}
+
+.tradeitemsheadright {
+    text-align: right;
+    font-size: 10px;
+    display: inline-block;
+    float: right;
+}
+
+.tradeitem[sent] .tradeitemimage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 46px;
+    height: 46px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.tradeitem[sent] .tradeiteminfo {
+    color: var(--whitealpha);
+    position: absolute;
+    left: 66px;
+    bottom: 10px;
+    font-size: 8px;
+}
+
+.tradeitem[sent] .tradeitemprice {
+    font-size: 8px;
+    text-align: right;
+    position: absolute;
+    right: 0;
+    top: 18px;
+    color: var(--whitealpha);
+}
+
+.tradeitem[sent] .tradeitemname {
+    width: calc(100vw - 20px - 50px - 66px - 50px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: absolute;
+    left: 66px;
+    top: 10px;
+    font-size: 10px;
+}
+
+.tradeitem.Mil-Spec .tradeitemname {
+    color: var(--blue);
+}
+
+.tradeitem.Restricted .tradeitemname {
+    color: var(--purple);
+}
+
+.tradeitem.Classified .tradeitemname {
+    color: var(--pink);
+}
+
+.tradeitem.Covert .tradeitemname {
+    color: var(--red);
+}
+
+.tradeitem.Legendary .tradeitemname {
+    color: var(--yellow);
+}
+
+.tradeiteminfobig {
+    color: var(--white);
+    font-weight: 500;
+}
+
+.tradeitem.null .tradeiteminfo {
+    display: none;
+}
+
+.tradeitem.null .tradeitemname {
+    top: 17px !important;
+    color: var(--whitealpha);
+}
+
+.tradeitem {
+    margin-top: 10px;
+    width: 100%;
+    position: relative;
+    height: 46px;
+}
+
+.tradeitem[received] .tradeitemimage {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 46px;
+    height: 46px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.tradeitem[received] .tradeiteminfo {
+    color: var(--whitealpha);
+    position: absolute;
+    text-align: right;
+    right: 66px;
+    bottom: 10px;
+    font-size: 8px;
+}
+
+.tradeitem[received] .tradeitemprice {
+    font-size: 8px;
+    position: absolute;
+    left: 0;
+    top: 18px;
+    color: var(--whitealpha);
+}
+
+.tradeitem[received] .tradeitemname {
+    width: calc(100vw - 20px - 50px - 66px - 50px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: absolute;
+    text-align: right;
+    right: 66px;
+    top: 10px;
+    font-size: 10px;
+}
+
+/* NOTE: MODAL */
+
+.appmodalwrapper {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 500;
+    left: 0;
+    top: 0;
+    justify-content: center;
+    align-items: center; 
+    background: var(--bluealpha);
+}
+
+.appmodalheader {
+    font-size: 12px;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.appmodalinput {
+    margin-top: 15px;
+    width: calc(100% - 30px);
+    height: 32px;
+    -webkit-appearance: none;
+    background-color: transparent;
+    color: var(--white);
+    font-size: 11px;
+    text-indent: 0;
+    position: relative;
+    border: none;
+    border-bottom: var(--blue) solid 2px;
+    bottom: 0;
+    transition: .2s;
+    left: 0;
+}
+
+.appmodal {
+    background: var(--overlayblue);
+    box-shadow: 0px 4px 4px var(--blackalpha);
+    padding: 50px 25px 50px 25px;
+    width: calc(100vw - 70px);
+    height: 62px;
+    position: absolute;
+}
+
+.appmodalaccept {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-bottom: var(--blue) solid 2px;
+    right: 25px;
+    bottom: 49px;
+}
+
+.appmodalinput::selection {
+    color: white;
+    background: var(--blue);
+}
+
+.appmodalinput:active {
+    border: none;
+    border-bottom: var(--blue) solid 2px;
+    outline: none;
+}
+
+.appmodalinput:focus {
+    border: none;
+    border-bottom: var(--blue) solid 2px;
+    outline: none;
+}
+
+.appmodalacceptcontent {
+    position: absolute;
+    right: -4px;
+    bottom: 4px;
+}
+
+.appmodaldecline {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 14px;
+}
+
+/* NOTE: TWOFACTOR MODAL */
+
+.apptfwrapper {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 5000000;
+    left: 0;
+    top: 0;
+    justify-content: center;
+    align-items: center; 
+    background: var(--bluealpha);
+}
+
+.apptfheader {
+    font-size: 12px;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.apptfinput {
+    margin-top: 15px;
+    width: calc(100% - 30px);
+    height: 32px;
+    -webkit-appearance: none;
+    background-color: transparent;
+    color: var(--white);
+    font-size: 11px;
+    text-indent: 0;
+    position: relative;
+    border: none;
+    border-bottom: var(--blue) solid 2px;
+    bottom: 0;
+    transition: .2s;
+    left: 0;
+}
+
+.apptf {
+    background: var(--overlayblue);
+    box-shadow: 0px 4px 4px var(--blackalpha);
+    padding: 50px 25px 50px 25px;
+    width: calc(100vw - 70px);
+    height: 62px;
+    position: absolute;
+}
+
+.apptfaccept {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-bottom: var(--blue) solid 2px;
+    right: 25px;
+    bottom: 49px;
+}
+
+.apptfinput::selection {
+    color: white;
+    background: var(--blue);
+}
+
+.apptfinput:active {
+    border: none;
+    border-bottom: var(--blue) solid 2px;
+    outline: none;
+}
+
+.apptfinput:focus {
+    border: none;
+    border-bottom: var(--blue) solid 2px;
+    outline: none;
+}
+
+.apptfacceptcontent {
+    position: absolute;
+    right: -4px;
+    bottom: 4px;
+}
+
+.apptfdecline {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 14px;
+}
+
+/* NOTE: MENU */
+
+.appcontentmenuwrapper {
+    transition: .3s;
+    z-index: 4999;
+    position: absolute;
+    background: transparent;
+    width: 100vw;
+    height: 100vh;
+    left: -100vw;
+    top: 0;
+}
+
+.appcontentmenu {
+    z-index: 5000;
+    width: 275px;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: var(--overlayblue);
+}
+
+.appcontentmenuentryhead {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+}
+
+.appcontentmenuentryhead[active] {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    color: var(--blue);
+    background: var(--lightblackalpha);
+    width: 100%;
+}
+
+.appcontentmenuentryhead[active] > .appcontentmenuentryheadicon {
+    color: var(--blue);
+}
+
+.appcontentmenuentryheadiconinner {
+    font-size: 20px;
+}
+
+.appcontentmenuentryheadicon {
+    position: absolute;
+    left: 15px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.appcontentmenuentryheadtext {
+    position: absolute;
+    left: 65px;
+    display: inline-block;
+    vertical-align: middle; 
+    font-size: 13px;
+}
+
+.appcontentmenuentryhead[open] .appcontentmenuentryheadopen {
+    transform: rotateZ(-180deg);
+    position: absolute;
+    right: 15px;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 15px;
+}
+
+.appcontentmenuentryheadopen {
+    transition: .3s;
+    position: absolute;
+    right: 15px;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 15px;
+}
+
+.appcontentmenuentry {
+    display: flex;
+    align-items: center;
+    text-indent: 80px;
+    height: 50px;
+    width: 100%;
+    color: white;
+    font-size: 13px;
+}
+
+.appcontentmenuentry[active] {
+    color: var(--blue);
+    background: var(--lightblackalpha);
+}
+
+.appcontentmenuentries {
+    width: 100%;
+    max-height: calc(100vh - 125px);
+    position: absolute;
+    overflow: auto;
+    top: 125px;
+}
+
+.appcontentmenuaccounts {
+    width: 100%;
+    position: absolute;
+    z-index: 5;
+    overflow: auto;
+    top: 125px;
+    height: calc(100vh - 125px);
+    background: var(--overlayblue);
+    display: none;
+    opacity: 0;
+}
+
+.appcontentmenuaccountsentry {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.appcontentmenuaccountsentryimg {
+    position: absolute;
+    left: 15px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.appcontentmenuaccountsentryname {
+    font-size: 13px;
+    max-width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--white);
+    position: absolute;
+    left: 65px;
+}
+
+.appcontentmenuaccountsentrynotsinner {
+    margin-top: 3px;
+}
+
+.appcontentmenuaccountsentrynots.small {
+    width: 15px;
+    height: 15px;
+    background: var(--blue);
+    border-radius: 50%;
+    position: absolute;
+    z-index: 15;
+    top: 35px;
+    left: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.appcontentmenuaccountsentrynots.null {
+    width: 15px;
+    height: 15px;
+    background: var(--blue);
+    border-radius: 50%;
+    position: absolute;
+    z-index: 15;
+    top: 35px;
+    left: 35px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.appcontentmenuaccountsentrynots.big {
+    width: 20px;
+    height: 15px;
+    background: var(--blue);
+    border-radius: 8px;
+    position: absolute;
+    z-index: 15;
+    top: 35px;
+    left: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.appcontentmenuaccountsentrynots.xl {
+    width: 25px;
+    height: 15px;
+    background: var(--blue);
+    border-radius: 8px;
+    position: absolute;
+    z-index: 15;
+    top: 35px;
+    left: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.appcontentmenuaccountsentryicon {
+    position: absolute;
+    left: 15px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.appcontentmenuaccountsentryiconinner {
+    font-size: 20px;
+}
+
+
+
+.appcontentmenuimage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 125px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: .5;
+}
+
+.appcontentmenuhelper {
+    opacity: .5;
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    top: 85px;
+    z-index: 2;
+}
+
+.appcontentmenuexpand {
+    transition: .3s;
+    position: absolute;
+    right: 15px;
+    top: 100px;
+    font-size: 15px;
+}
+
+.appcontentmenuexpand[active] {
+    transform: rotateZ(-180deg);
+}
+
+.appcontentmenuname {
+    max-width: 195px;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--white);
+    position: absolute;
+    left: 15px;
+    top: 100px;
+}
+
+.appcontentmenusettings {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 15px;
+}
+
+.appcontentmenuchange {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 15px;
+}
+
+.appcontentmenufooter {
+    position: absolute;
+    bottom: 5px;
+    color: var(--whitealpha);
+    width: 100%;
+    text-align: center;
+    font-size: 8px;
+}
+
+/* NOTE: Inventory */
+
+.invitemimage {
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    width: 46px;
+    height: 46px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.inviteminfo {
+    color: var(--whitealpha);
+    position: absolute;
+    left: 91px;
+    bottom: 35px;
+    font-size: 8px;
+}
+
+.invitemprice {
+    font-size: 8px;
+    text-align: right;
+    position: absolute;
+    right: 25px;
+    top: 43px;
+    color: var(--whitealpha);
+}
+
+.invitemname {
+    width: calc(100vw - 20px - 50px - 66px - 50px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: absolute;
+    left: 91px;
+    top: 35px;
+    font-size: 10px;
+}
+
+.invitem.Mil-Spec .invitemname {
+    color: var(--blue);
+}
+
+.invitem.Restricted .invitemname {
+    color: var(--purple);
+}
+
+.invitem.Classified .invitemname {
+    color: var(--pink);
+}
+
+.invitem.Covert .invitemname {
+    color: var(--red);
+}
+
+.invitem.Legendary .invitemname {
+    color: var(--yellow);
+}
+
+.inviteminfobig {
+    color: var(--white);
+    font-weight: 500;
+}
+
+.invitem.null .inviteminfo {
+    display: none;
+}
+
+.invitem.null .invitemname {
+    top: 43px !important;
+    color: var(--whitealpha);
+}
+
+.invitem.null .itembar {
+    display: none;
+}
+
+.invitem.null .itemarrow {
+    display: none;
+}
+
+.invitem {
+    background: var(--overlayblue);
+    margin: 0 auto;
+    margin-top: 10px;
+    width: calc(100vw - 20px);
+    position: relative;
+    height: 96px;
+}
+
+.invitem[active] {
+    background: var(--itemblue);
+}
+
+.invitem:last-of-type {
+    margin-bottom: 10px !important;
+}
+
+.itembar {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--green) 0%, var(--green) 6.99%, var(--lightyellow) 7%, var(--lightyellow) 14.99%, var(--yellow) 15%,var(--yellow) 37.99%, var(--orange) 38%, var(--orange) 44.99%,var(--red) 45%, var(--red) 100%);
+}
+
+.itemarrow {
+    width: 8.8px;
+    height: 4.5px;
+    position: absolute;
+    z-index: 4;
+    bottom: 1.3px;
+}
+
+/* NOTE: Trade */
+
+.tradeurlwrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tradeurlheader {
+    font-size: 12px;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.tradeurlinput {
+    margin-top: 15px;
+    width: calc(100% - 30px);
+    height: 32px;
+    -webkit-appearance: none;
+    background-color: transparent;
+    color: var(--white);
+    font-size: 11px;
+    text-indent: 0;
+    position: relative;
+    border: none;
+    border-bottom: var(--blue) solid 2px;
+    bottom: 0;
+    transition: .2s;
+    left: 0;
+}
+
+.tradeurlbox {
+    background: var(--overlayblue);
+    box-shadow: 0px 4px 4px var(--blackalpha);
+    padding: 50px 25px 50px 25px;
+    width: calc(100vw - 70px);
+    height: 62px;
+    position: absolute;
+}
+
+.tradeurlsubmit {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-bottom: var(--blue) solid 2px;
+    right: 25px;
+    bottom: 49px;
+}
+
+.tradeurlinput::selection {
+    color: white;
+    background: var(--blue);
+}
+
+.tradeurlinput:active {
+    border: none;
+    border-bottom: var(--blue) solid 2px;
+    outline: none;
+}
+
+.tradeurlinput:focus {
+    border: none;
+    border-bottom: var(--blue) solid 2px;
+    outline: none;
+}
+
+.tradeurlsubmitcontent {
+    position: absolute;
+    right: -4px;
+    bottom: 4px;
+}
+
+/* NOTE: Settings */
+
+.settingswrapper {
+    background: var(--overlayblue);
+    box-shadow: 0px 4px 4px var(--blackalpha);
+    padding: 25px;
+    width: calc(100vw - 70px);
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.settingshead1 {
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.settingsurl {
+    margin-bottom: 45px;
+    width: 100%;
+    height: 32px;
+    -webkit-appearance: none;
+    background-color: transparent;
+    color: var(--whitealpha);
+    font-size: 11px;
+    text-indent: 0;
+    border: none;
+    border-bottom: var(--blue) solid 2px;
+    bottom: 0;
+    transition: .2s;
+    left: 0;
+}
+
+.settingsurl::selection {
+    color: white;
+    background: var(--blue);
+}
+
+.settingsurl:focus {
+    outline: none;
+    color: var(--white);
+}
+
+.settingsurl:active {
+    outline: none;
+    color: var(--white);
+}
+
+.settingshead2 {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.settingssubhead1 {
+    line-height: 15px;
+    font-size: 10px;
+    color: var(--whitealpha);
+    margin-bottom: 15px;
+}
+
+.settingsenable {
+    width: 100%;
+    height: 26px;
+    background: var(--blue);
+    color: var(--overlayblue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    font-size: 10px;
+    margin-bottom: 45px;
+}
+
+.settingsdisable {
+    display: flex;
+    width: 100%;
+    height: 26px;
+    background: var(--red);
+    color: var(--white);
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    font-size: 10px;
+    margin-bottom: 45px;
+}
+
+.settingshead3 {
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.settingslogout {
+    width: 100%;
+    height: 26px;
+    background: var(--red);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    font-size: 10px;
+}
+
+.settingsfav {
+    width: 100%;
+    height: 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.settingsfavimg {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    left: 0;
+}
+
+.settingsfavname {
+    position: absolute;
+    left: 40px;
+    font-size: 12px;
+}
+
+.settingsfav[unknown] > .settingsfavimg {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: .3;
+    left: 0;
+}
+
+.settingsfav[unknown] > .settingsfavname {
+    position: absolute;
+    left: 40px;
+    font-size: 12px;
+    opacity: .3;
+}
+
+.settingsfavremove {
+    width: 26px;
+    height: 26px;
+    background: var(--red);
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+}
+
+.settingsfavremoveimg {
+    width: 8.7px;
+    height: 9.4px;
+}
+
+
+.appmodalheader {
+    font-size: 12px;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.appmodalinput {
+    margin-top: 15px;
+    width: calc(100% - 30px);
+    height: 32px;
+    -webkit-appearance: none;
+    background-color: transparent;
+    color: var(--white);
+    font-size: 11px;
+    text-indent: 0;
+    position: relative;
+    border: none;
+    border-bottom: var(--blue) solid 2px;
+    bottom: 0;
+    transition: .2s;
+    left: 0;
+}
+
+.appmodal {
+    background: var(--overlayblue);
+    box-shadow: 0px 4px 4px var(--blackalpha);
+    padding: 50px 25px 50px 25px;
+    width: calc(100vw - 70px);
+    height: 62px;
+    position: absolute;
+}
+
+/* NOTE: TwoFactor */
+
+.tfoverlay {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    z-index: 560000;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 0;
+    background: var(--overlayblue);
+    position: absolute;
+}
+
+.tfclose {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    z-index: 1;
+}
+
+.tfwrapper {
+    position: absolute;
+    top: 30px;
+    width: calc(100% - 50px);
+    height: calc(100vh - 100px);
+    overflow: auto;
+}
+
+.tfheader:first-of-type {
+    margin-top: 0;
+}
+
+.tfheader {
+    color: var(--blue);
+    margin-top: 35px;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.tftext {
+    line-height: 20px;
+    font-size: 12px;
+}
+
+.tftext a {
+    color: var(--blue);
+    text-decoration: none;
+}
+
+.tfscan {
+    position: absolute;
+    bottom: 61px;
+    left: 25px;
+    width: calc(100% - 50px);
+    height: 26px;
+    background: var(--blue);
+    color: var(--overlayblue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    font-size: 10px;
+}
+
+.tfsecret {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    width: calc(100% - 50px);
+    height: 26px;
+    background: var(--blue);
+    color: var(--overlayblue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    font-size: 10px;
+}
+
+
+
+
+
+
+
+/* -------------------------------------------------------------------------------------------------------------------- */
+
+/* NOTE: ANIMATIONS */
+
+@keyframes loadBar {
+    0% {
+        width: 0%;
+    }
+    5% {
+        width: 12%;
+    }
+    15% {
+        width: 12%;
+    }
+    35% {
+        width: 25%;
+    }
+    51% {
+        width: 25%;
+    }
+    78% {
+        width: 78%;
+    }
+    84% {
+        width: 78%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes timerBar {
+    0% {
+        transform: scaleX(1);
+        background: var(--blue);
+    }
+    74% {
+        transform: scaleX(0.26);
+        background: var(--blue);
+    }
+    75% {
+        transform: scaleX(0.25);
+        background: var(--red);
+    }
+    100% {
+        transform: scaleX(0);
+        background: var(--red);
+    }
+}
+
+@keyframes timerTitle {
+    0% {
+        color: var(--blue);
+    }
+    74% {
+        color: var(--blue);
+    }
+    75% {
+        color: var(--red);
+    }
+    100% {
+        color: var(--red);
+    }
+}
+
+@keyframes moveLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(25vw);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes moveRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-25vw);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes overscroll {
+    0% {
+        transform: translateY(0px);
+    }
+    75% {
+        transform: translateY(5vh);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes colorChange {
+    0%   { color: #FC4949 }
+    10%  { color: #FCBA49 }
+    20%  { color: #EAFC49 }
+    30%  { color: #7EFC49 }
+    40%  { color: #49FCA3 }
+    50%  { color: #49E4FC }
+    60%  { color: #4991FC }
+    70%  { color: #5B49FC }
+    80%  { color: #C149FC }
+    90%  { color: #FC49D8 }
+    100% { color: #FC4949 }
+}

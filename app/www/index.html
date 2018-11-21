@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta name="currentpage" id="currentpagemeta" content="login">
+    <meta http-equiv="Content-Security-Policy" content="default-src * waxexpress:; 
+                      style-src * 'self' 'unsafe-inline' 'unsafe-eval'; 
+                      script-src * 'self' 'unsafe-inline' 'unsafe-eval';">
+    <link rel="stylesheet" type="text/css" href="css/reset.min.css" />
+    <link rel="stylesheet" href="css/material.css">
+	<link rel="stylesheet" href="css/roboto.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <title></title>
+</head>
+
+<body>
+    <div class="tfoverlay" id="tfoverlay">
+        <i class="material-icons tfclose" onclick="document.getElementById('tfoverlay').style.display = 'none';">close</i>
+        <div class="tfwrapper">
+            <h1 class="tfheader">Deactivate your old TwoFactor</h1>
+            <h1 class="tftext">
+                1. Go to <a href="https://opskins.com/?loc=store_account#collapseSec">https://opskins.com/?loc=store_account#collapseSec</a><br>
+                2. Click on "Disable Two-Factor Authentication"<br>
+                3. You will be prompted to enter your 2FA Token<br>
+                4. Enter the Token from your old 2FA-App<br>
+                5. You have now disabled TwoFactor Authentication and need to reenable it<br>
+                6. Follow the steps below
+            </h1>
+            <h1 class="tfheader">Activate In-App TwoFactor</h1>
+            <h1 class="tftext">
+                1. Go to <a href="https://opskins.com/?loc=store_account#collapseSec">https://opskins.com/?loc=store_account#collapseSec</a><br>
+                2. Click on "Enable Two-Factor Authentication"<br>
+                3. Wait for an Email from OPSkins<br>
+                4. Input the 2FA Token OPSkins sent you<br>
+                5. You will now see a page including a QR-Code<br>
+                6. Click the button below to scan this QR-Code or enter the Secret from below the QR-Code<br>
+                7. You activated TwoFactor Auth inside our App<br>
+                8. If you save the Secret below the QR-Code, you can input it in other 2FA-Apps and use them aswell
+            </h1>
+        </div>
+        <div class="tfscan" onclick="startTwoFactorFlow();">Scan QR-Code</div>
+        <div class="tfsecret" onclick="enterTwoFactorSecret();">or Enter TwoFactor Secret</div>
+    </div>
+    <div class="apptfwrapper" id="apptfwrapper">
+        <div class="apptf">
+            <i class="material-icons apptfdecline" onclick="document.getElementById('apptfwrapper').style.display = 'none';">close</i>
+            <h1 class="apptfheader">Enter TwoFactor Secret:</h1>
+            <input type="text" class="apptfinput" id="apptfinput">
+            <div class="apptfaccept" id="apptfaccept" onclick="proceedTwoFactorSecret();">
+                <i class="material-icons apptfacceptcontent">check</i>
+            </div>
+        </div>
+    </div>
+    <div class="appitemwrapper" id="appitemwrapper">
+    </div>
+    <div class="appmodalwrapper" id="appmodalwrapper">
+        <div class="appmodal">
+            <i class="material-icons appmodaldecline" onclick="document.getElementById('appmodalwrapper').style.display = 'none';">close</i>
+            <h1 class="appmodalheader">Enter TwoFactor Code:</h1>
+            <input type="text" class="appmodalinput" id="appmodalinput" maxlength="6">
+            <div class="appmodalaccept" id="appmodalaccept">
+                <i class="material-icons appmodalacceptcontent">check</i>
+            </div>
+        </div>
+    </div>
+    <div class="appcontentmenuwrapper" id="appcontentmenuwrapper">
+        <div class="appcontentmenu" id="appcontentmenu">
+            <div class="appcontentmenuimage" id="appcontentmenuimage"></div>
+            <div class="appcontentmenuhelper" onclick="showAccounts(); event.preventDefault(); event.stopPropagation();"></div>
+            <h1 class="appcontentmenuname" id="appcontentmenuname"></h1>
+            <i class="material-icons appcontentmenuexpand" id="appcontentmenuexpand">expand_more</i>
+            <i class="material-icons appcontentmenusettings" onclick="showSettings();">settings</i>
+            <div class="appcontentmenuaccounts" id="appcontentmenuaccounts">
+
+            </div>
+            <div class="appcontentmenuentries">
+                <div class="appcontentmenuentryhead" id="menhead0" onclick=" menuExpand(0); event.preventDefault(); event.stopPropagation();">
+                    <div class="appcontentmenuentryheadicon">
+                        <i class="material-icons appcontentmenuentryheadiconinner">compare_arrows</i>
+                    </div>
+                    <h1 class="appcontentmenuentryheadtext">Received</h1>
+                    <i class="material-icons appcontentmenuentryheadopen">expand_more</i>
+                </div>
+                <div class="appcontentmenuentry men" id="men0" style="display: none;" onclick="getOffers(0, 2, 0); menuCheck(0);" siteContext="offers received pending">Pending</div>
+                <div class="appcontentmenuentry men" id="men1" style="display: none;" onclick="getOffers(0, 3, 0); menuCheck(1);" siteContext="offers received accepted">Accepted</div>
+                <div class="appcontentmenuentry men" id="men2" style="display: none;" onclick="getOffers(0, '5,6,7,8,10,12', 0); menuCheck(2);" siteContext="offers received declined">Canceled</div>
+                <div class="appcontentmenuentry men" id="men3" style="display: none;" onclick="getOffers(0, '2,3,4,5,6,7,8,10,12', 0); menuCheck(3);" siteContext="offers received all">All</div>
+                <div class="appcontentmenuentryhead" id="menhead1" onclick=" menuExpand(1); event.preventDefault(); event.stopPropagation();">
+                    <div class="appcontentmenuentryheadicon">
+                        <i class="material-icons appcontentmenuentryheadiconinner">swap_horiz</i>
+                    </div>
+                    <h1 class="appcontentmenuentryheadtext">Sent</h1>
+                    <i class="material-icons appcontentmenuentryheadopen">expand_more</i>
+                </div>
+                <div class="appcontentmenuentry men" id="men4" style="display: none;" onclick="getOffers(0, 2, 1); menuCheck(4);" siteContext="offers sent pending">Pending</div>
+                <div class="appcontentmenuentry men" id="men5" style="display: none;" onclick="getOffers(0, 3, 1); menuCheck(5);" siteContext="offers sent accepted">Accepted</div>
+                <div class="appcontentmenuentry men" id="men6" style="display: none;" onclick="getOffers(0, '5,6,7,8,10,12', 1); menuCheck(6);" siteContext="offers sent declined">Canceled</div>
+                <div class="appcontentmenuentry men" id="men7" style="display: none;" onclick="getOffers(0, '2,3,4,5,6,7,8,10,12', 1); menuCheck(7);" siteContext="offers sent all">All</div>
+                <div class="appcontentmenuentryhead men" id="men8" onclick="showTrade(); menuCheck(8);">
+                    <div class="appcontentmenuentryheadicon">
+                        <i class="material-icons appcontentmenuentryheadiconinner">shuffle</i>
+                    </div>
+                    <h1 class="appcontentmenuentryheadtext">Trade</h1>
+                </div>
+                <div class="appcontentmenuentryhead men" id="men9" onclick="showInventory(); menuCheck(9);">
+                    <div class="appcontentmenuentryheadicon">
+                        <i class="material-icons appcontentmenuentryheadiconinner">view_list</i>
+                    </div>
+                    <h1 class="appcontentmenuentryheadtext">Inventory</h1>
+                </div>
+            </div>
+            <!-- <h1 class="appcontentmenufooter">Powered by VGOPalace.com</h1> -->
+        </div>
+    </div>
+    <div class="appoverlay" id="appoverlay">
+        <div class="appoverlaycode" id="appoverlaycode">
+            <h1 class="appoverlaycodetitle" id="appoverlaycodetitle"></h1>
+            <h1 class="appoverlaycodeuser" id="appoverlaycodeuser"></h1>
+            <div class="appoverlaycodebutton" id="appoverlaycodebutton" style="display: none;" onclick="showTwoFactorHelp();">Use In-App TwoFactor</div>
+        </div>
+        <div class="appoverlaybar">
+            <div class="appoverlaybartop" id="appoverlaybartop"></div>
+        </div>
+    </div>
+    <div class="apploadingcontent" id="apploadingcontent">
+        <div class="apploadingwrapper" id="apploadingwrapper">
+            <div class="apploading">
+                <img src="img/waxLogo.svg" alt="" class="apploadingimg" id="apploadingimg">
+                <div class="apploadingbar" id="apploadingbar">
+                    <div class="apploadingbarloader" id="apploadingbarloader"></div>
+                    <div class="apploadingbarborder"></div>
+                </div>
+            </div>
+            <div class="applogin" id="applogin">
+                <div class="apploginbutton" onclick="cordovaOauthLogin();">
+                    <div class="apploginbuttontop">
+                        <img class="apploginbuttontopimg" src="img/opskins.svg" alt="">
+                    </div>
+                    <div class="apploginbuttonbottom">
+                        <h1 class="apploginbuttonbottomtext1">Sign in with OPSkins</h1>
+                        <h1 class="apploginbuttonbottomtext2">TM</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="appcontentwrapper" id="appcontentwrapper">
+        <div class="appcontenttop">
+            <div class="appcontentbar">
+                <i class="material-icons appcontentleft" id="appcontentleft"></i>
+                <h1 class="appcontenttitle" id="appcontenttitle"></h1>
+                <i class="material-icons appcontentright" id="appcontentright"></i>
+            </div>
+        </div>
+        <div class="appcontentloading" id="appcontentloading">
+            <div class="lds-ellipsis">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div class="appcontentinner" id="appcontentinner">
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <script src="js/otpauth-3.1.3.min.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+    <script>
+        function handleOpenURL(url) {
+            checkToken(url);
+        }
+    </script>
+    
+</body>
+</html>
