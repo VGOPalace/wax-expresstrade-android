@@ -2,9 +2,12 @@ var app = {
     initialize: function() {
         this.bindEvents();
 
-        if(localStorage.getItem('version') != "1.1.0") {
-            localStorage.clear();
-            localStorage.setItem("version", "1.1.0");
+        if(localStorage.getItem('version') != "1.1.1") {
+            if (localStorage.getItem('twoFactor') != null) {
+                alert("This is your TwoFactor Secret - Write it down before you continue: \n" + JSON.parse(localStorage.getItem('twoFactor')).secret);
+            }
+            // localStorage.clear();
+            localStorage.setItem("version", "1.1.1");
         }
         if(localStorage.getItem('notifications') == null) {
             localStorage.setItem('notifications', JSON.stringify([]));
